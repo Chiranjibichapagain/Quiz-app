@@ -1,0 +1,15 @@
+@import '../../config';
+
+.nav {
+  width: 100%;
+  background: $text-light;
+  padding: 20px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 3px 15px black;
+}
+
+.logo {
+  width: 80px;
+}

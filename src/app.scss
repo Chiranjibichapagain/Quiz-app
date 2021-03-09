@@ -5,5 +5,14 @@
 }
 
 body {
-  background-color: aqua;
+  background-image: url('./assets/background.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.home-main {
+  padding: 20px 300px;
+  display: flex;
+  justify-content: center;
 }
