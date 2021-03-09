@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto+Slab:wght@300&family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Nunito&display=swap');
+
 //colors
 $primary: #fa562c;
 $secondary: #1a3fad;
@@ -20,6 +23,9 @@ $radius-big: 10px;
 $radius-small: 6px;
 
 //fonts
-$roboto-big: 'Roboto Condensed', sans-serif;
-$roboto-small: 'Roboto Slab', serif;
-$ubuntu: 'Ubuntu', sans-serif;
+$roboto-big: 'Roboto Condensed' sans-serif;
+$roboto-small: 'Roboto Slab' serif;
+$ubuntu: 'Ubuntu' sans-serif;
+$montserrat: 'Montserrat' sans-serif;
+$nunito: 'Nunito' sans-serif;
+$roboto: 'Roboto' sans-serif;
