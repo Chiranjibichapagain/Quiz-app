@@ -1,0 +1,7 @@
+**/*.d.ts
+# 3rd party libs
+/src/public/
+# custom definition files
+/src/types/
+# client
+/client/build/*
