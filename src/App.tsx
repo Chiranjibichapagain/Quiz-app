@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Select from 'react-select';
+import Select, { OptionsType, ValueType } from 'react-select';
 
 import Nav from './components/Nav';
 import { categories, difficultyLevel, questionType } from './constants';
@@ -7,10 +7,12 @@ import './app.scss';
 
 const App = () => {
   const [page, setPage] = useState<string>('home');
-  const [number, setNumber] = useState(null);
-  const [category, setCategory] = useState(null);
+  const [number, setNumber] = useState<number | string>('');
+  const [category, setCategory] = useState<string>('');
   const [level, setLevel] = useState<string>('');
   const [type, setType] = useState<string>('');
+
+  console.log('xxx--', number, category, level, type);
 
   return (
     <div className="app">
@@ -22,8 +24,9 @@ const App = () => {
             <div className="home-main__filter-item">
               <label>Questions</label>
               <input
+                value={number}
                 className="home-main__input"
-                onChange={(e: any) => setNumber(e.target.value)}
+                onChange={({ target }) => setNumber(target.value)}
                 type="number"
               />
             </div>
@@ -33,7 +36,7 @@ const App = () => {
                 className="home-main__select"
                 Value={category}
                 options={categories}
-                onChange={() => setCategory}
+                onChange={(option: any) => setCategory(option.value)}
               />
             </div>
             <div className="home-main__filter-item">
@@ -42,7 +45,7 @@ const App = () => {
                 className="home-main__select"
                 Value={level}
                 options={difficultyLevel}
-                onChange={(target: any) => setLevel}
+                onChange={(option: any) => setCategory(option.value)}
               />
             </div>
             <div className="home-main__filter-item">
@@ -51,7 +54,7 @@ const App = () => {
                 className="home-main__select"
                 Value={type}
                 options={questionType}
-                onChange={(target: any) => setType}
+                onChange={(option: any) => setCategory(option.value)}
               />
             </div>
           </div>

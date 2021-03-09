@@ -1,4 +1,9 @@
-export const categories = [
+export type OptionType = {
+  value: string;
+  label: string;
+};
+
+export const categories: OptionType[] = [
   { value: 'General Knowledge', label: 'General Knowledge' },
   { value: 'Entertainment:Books', label: 'Entertainment:Books' },
   { value: 'Entertainment:Films', label: 'EninitialStatence:Computers' },
@@ -12,14 +17,14 @@ export const categories = [
   { value: 'Animal', label: 'Animal' }
 ];
 
-export const difficultyLevel = [
+export const difficultyLevel: OptionType[] = [
   { value: 'Any Difficulty', label: 'Any Difficulty' },
   { value: 'Easy', label: 'Easy' },
   { value: 'Medium', label: 'Medium' },
   { value: 'Hard', label: 'Hard' }
 ];
 
-export const questionType = [
+export const questionType: OptionType[] = [
   { value: 'Any Type', label: 'Any Type' },
   { value: 'Multiple Choice', label: 'Multiple Choice' },
   { value: 'True/False', label: 'True/False' }
