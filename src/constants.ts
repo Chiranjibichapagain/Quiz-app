@@ -4,17 +4,17 @@ export type OptionType = {
 };
 
 export const categories: OptionType[] = [
-  { value: 'General Knowledge', label: 'General Knowledge' },
-  { value: 'Entertainment:Books', label: 'Entertainment:Books' },
-  { value: 'Entertainment:Films', label: 'EninitialStatence:Computers' },
-  { value: 'Science:Mathematics', label: 'Science:Mathematics' },
-  { value: 'Mythology', label: 'Mythology' },
-  { value: 'Sports', label: 'Sports' },
-  { value: 'History', label: 'History' },
-  { value: 'Geography', label: 'Geography' },
-  { value: 'Politics', label: 'Politics' },
-  { value: 'Art', label: 'Art' },
-  { value: 'Animal', label: 'Animal' }
+  { value: '1', label: 'General Knowledge' },
+  { value: '2', label: 'Entertainment:Books' },
+  { value: '10', label: 'Science:Computers' },
+  { value: '4', label: 'Science:Mathematics' },
+  { value: '5', label: 'Mythology' },
+  { value: '6', label: 'Sports' },
+  { value: '7', label: 'History' },
+  { value: '8', label: 'Geography' },
+  { value: '9', label: 'Politics' },
+  { value: '10', label: 'Art' },
+  { value: '11', label: 'Animal' }
 ];
 
 export const difficultyLevel: OptionType[] = [

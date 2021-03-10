@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Select, { OptionsType, ValueType } from 'react-select';
+import Select from 'react-select';
 
 import Nav from './components/Nav';
 import { categories, difficultyLevel, questionType } from './constants';
@@ -11,12 +11,33 @@ const App = () => {
   const [category, setCategory] = useState<string>('');
   const [level, setLevel] = useState<string>('');
   const [type, setType] = useState<string>('');
+  const [quiz, setQuiz] = useState([]);
 
-  console.log('xxx--', number, category, level, type);
+  const fetchData = async (url: string) => {
+    const data = await (await fetch(url)).json();
+    if (data) {
+      const quizData = data.results.map((result: any) => ({
+        question: result.question,
+        correct: result.correct_answer,
+        wrong: result.incorrect_answers
+      }));
+      setQuiz(quizData);
+    }
+  };
+
+  // fetchData('https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple');
+
+  const startQuiz = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event?.preventDefault();
+    setPage('quiz');
+    fetchData(
+      `https://opentdb.com/api.php?amount=${number}&category=21&difficulty=easy&type=multiple`
+    );
+  };
 
   return (
     <div className="app">
-      <Nav />
+      <Nav setPage={setPage} />
       {page === 'home' && (
         <div className="home-main">
           <h1 className="home-main__heading">WELCOME TO THE QUIZ APP</h1>
@@ -45,7 +66,7 @@ const App = () => {
                 className="home-main__select"
                 Value={level}
                 options={difficultyLevel}
-                onChange={(option: any) => setCategory(option.value)}
+                onChange={(option: any) => setLevel(option.value)}
               />
             </div>
             <div className="home-main__filter-item">
@@ -54,11 +75,13 @@ const App = () => {
                 className="home-main__select"
                 Value={type}
                 options={questionType}
-                onChange={(option: any) => setCategory(option.value)}
+                onChange={(option: any) => setType(option.value)}
               />
             </div>
           </div>
-          <button className="home-main__btn">Let's Go</button>
+          <button onClick={startQuiz} className="home-main__btn">
+            Let's Go
+          </button>
         </div>
       )}
       {page === 'quiz' && <div>Hello quiz</div>}
