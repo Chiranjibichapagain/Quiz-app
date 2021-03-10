@@ -1,31 +1,36 @@
+export type OptionCategoryType = {
+  value: number;
+  label: string;
+};
 export type OptionType = {
   value: string;
   label: string;
 };
 
-export const categories: OptionType[] = [
-  { value: '1', label: 'General Knowledge' },
-  { value: '2', label: 'Entertainment:Books' },
-  { value: '10', label: 'Science:Computers' },
-  { value: '4', label: 'Science:Mathematics' },
-  { value: '5', label: 'Mythology' },
-  { value: '6', label: 'Sports' },
-  { value: '7', label: 'History' },
-  { value: '8', label: 'Geography' },
-  { value: '9', label: 'Politics' },
-  { value: '10', label: 'Art' },
-  { value: '11', label: 'Animal' }
+export const categories: OptionCategoryType[] = [
+  { value: 9, label: 'General Knowledge' },
+  { value: 10, label: 'Entertainment:Books' },
+  { value: 18, label: 'Science:Computers' },
+  { value: 19, label: 'Science:Mathematics' },
+  { value: 20, label: 'Mythology' },
+  { value: 21, label: 'Sports' },
+  { value: 22, label: 'Geography' },
+  { value: 23, label: 'History' },
+  { value: 24, label: 'Politics' },
+  { value: 25, label: 'Art' },
+  { value: 26, label: 'Celebraties' },
+  { value: 27, label: 'Animal' }
 ];
 
 export const difficultyLevel: OptionType[] = [
-  { value: 'Any Difficulty', label: 'Any Difficulty' },
-  { value: 'Easy', label: 'Easy' },
-  { value: 'Medium', label: 'Medium' },
-  { value: 'Hard', label: 'Hard' }
+  { value: 'any', label: 'Any Difficulty' },
+  { value: 'easy', label: 'Easy' },
+  { value: 'medium', label: 'Medium' },
+  { value: 'hard', label: 'Hard' }
 ];
 
 export const questionType: OptionType[] = [
-  { value: 'Any Type', label: 'Any Type' },
-  { value: 'Multiple Choice', label: 'Multiple Choice' },
-  { value: 'True/False', label: 'True/False' }
+  { value: 'any', label: 'Any Type' },
+  { value: 'multiple', label: 'Multiple Choice' },
+  { value: 'boolean', label: 'True/False' }
 ];

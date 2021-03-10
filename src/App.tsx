@@ -4,36 +4,42 @@ import Select from 'react-select';
 import Nav from './components/Nav';
 import { categories, difficultyLevel, questionType } from './constants';
 import './app.scss';
+import QuizPage from './components/QuizPage';
+import { QuizType } from './componentTypes';
 
 const App = () => {
   const [page, setPage] = useState<string>('home');
   const [number, setNumber] = useState<number | string>('');
-  const [category, setCategory] = useState<string>('');
+  const [category, setCategory] = useState<number>();
   const [level, setLevel] = useState<string>('');
   const [type, setType] = useState<string>('');
-  const [quiz, setQuiz] = useState([]);
+  const [quiz, setQuiz] = useState<QuizType[] | []>([]);
+  const [error, setError] = useState<string>('');
 
   const fetchData = async (url: string) => {
-    const data = await (await fetch(url)).json();
-    if (data) {
-      const quizData = data.results.map((result: any) => ({
-        question: result.question,
-        correct: result.correct_answer,
-        wrong: result.incorrect_answers
-      }));
-      setQuiz(quizData);
+    try {
+      const data = await (await fetch(url)).json();
+      if (data) {
+        const quizData = data.results.map((result: any) => ({
+          question: result.question,
+          correct: result.correct_answer,
+          wrong: result.incorrect_answers
+        }));
+        setQuiz(quizData);
+      }
+    } catch (error) {
+      setError(error);
     }
   };
 
-  // fetchData('https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple');
-
-  const startQuiz = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const startQuiz = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event?.preventDefault();
+    const url = `https://opentdb.com/api.php?amount=${number}&category=${category}&difficulty=${level}&type=${type}`;
     setPage('quiz');
-    fetchData(
-      `https://opentdb.com/api.php?amount=${number}&category=21&difficulty=easy&type=multiple`
-    );
+    fetchData(url);
   };
+
+  console.log('test--', quiz, error);
 
   return (
     <div className="app">
@@ -84,7 +90,7 @@ const App = () => {
           </button>
         </div>
       )}
-      {page === 'quiz' && <div>Hello quiz</div>}
+      {page === 'quiz' && <QuizPage setPage={setPage} setQuiz={setQuiz} quiz={quiz} />}
     </div>
   );
 };
