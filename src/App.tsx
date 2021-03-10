@@ -37,6 +37,7 @@ const App = () => {
     const url = `https://opentdb.com/api.php?amount=${number}&category=${category}&difficulty=${level}&type=${type}`;
     setPage('quiz');
     fetchData(url);
+    setNumber('');
   };
 
   console.log('all data', quiz, error);
