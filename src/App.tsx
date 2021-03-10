@@ -39,7 +39,7 @@ const App = () => {
     fetchData(url);
   };
 
-  console.log('test--', quiz, error);
+  console.log('all data', quiz, error);
 
   return (
     <div className="app">
