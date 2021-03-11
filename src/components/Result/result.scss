@@ -7,12 +7,13 @@
   align-items: center;
 
   &__heading {
-    color: $text-light;
+    color: $primary;
     font-size: $text-xl;
-    background-color: $primary;
-    padding: 10px 20px;
-    border-radius: $radius-big;
-    margin-bottom: 15px;
+    border-radius: 0px 8px 0px 8px;
+    padding: 5px 30px;
+    margin-bottom: 35px;
+    background-color: $text-light;
+    box-shadow: 0px 3px 8px black;
   }
 
   &__total {

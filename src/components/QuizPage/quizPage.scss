@@ -46,17 +46,8 @@
   cursor: pointer;
   transition: 0.3s ease-in-out;
 
-  &--next {
-    background-color: rgba(255, 255, 255, 0.884);
-    color: $primary;
-  }
-
-  &--next:hover {
-    background-color: $primary;
-    color: $text-light;
-  }
-
   &--result {
+    margin-top: 20px;
     border: 1.5px solid $primary;
     background-color: rgba(255, 255, 255, 0);
     color: $text-light;

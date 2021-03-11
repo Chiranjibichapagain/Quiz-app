@@ -11,7 +11,7 @@ const QuizPage = ({ quiz, setPage, setQuiz }: QuizPageProp) => {
   const [current, setCurrent] = useState<number>(0);
   const [percent, setPercent] = useState(0);
   const [isResultOpen, setIsResultOpen] = useState(false);
-  const [countRight, setCountRight] = useState(7);
+  const [countRight, setCountRight] = useState(2);
   const [checked, setChecked] = useState(false);
 
   const length = quiz.length;
@@ -45,7 +45,7 @@ const QuizPage = ({ quiz, setPage, setQuiz }: QuizPageProp) => {
         <div>
           {quiz.length === 0 && (
             <div>
-              <h3 className="quiz-page__message">Oops! couldn't load the quiz!</h3>
+              <h3 className="quiz-page__message">Loading Quiz..!</h3>
               <div className="quiz-page__loader">
                 <HashLoader size={150} color="white" />
               </div>

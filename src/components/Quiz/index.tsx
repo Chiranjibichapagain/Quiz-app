@@ -3,14 +3,17 @@ import { QuizProp } from '../../componentTypes';
 
 import './quiz.scss';
 const Quiz = ({ quiz, checked, setChecked, next }: any) => {
+  const [btnIsDisabled, setBtnIsDisabled] = useState(false);
   const answers = quiz && [quiz.correct, ...quiz.wrong];
   const shuffeledAnswers = answers && answers.sort(() => Math.random() - 0.5);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
+    setBtnIsDisabled(true);
     setChecked(true);
     setTimeout(() => {
       next();
+      setBtnIsDisabled(false);
     }, 3000);
   };
 
@@ -37,7 +40,12 @@ const Quiz = ({ quiz, checked, setChecked, next }: any) => {
           </h1>
           <div className="quiz__answers">
             {shuffeledAnswers.map((item: string, index: number) => (
-              <button onClick={handleClick} className={className(item)} key={index}>
+              <button
+                disabled={btnIsDisabled ? true : false}
+                onClick={handleClick}
+                className={className(item)}
+                key={index}
+              >
                 {item.replaceAll('&#039;', "'").replaceAll('&rsquo;', "'")}
               </button>
             ))}
