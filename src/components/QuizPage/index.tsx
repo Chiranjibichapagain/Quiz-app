@@ -12,12 +12,18 @@ const QuizPage = ({ quiz, setPage, setQuiz }: QuizPageProp) => {
   const [percent, setPercent] = useState(0);
   const [isResultOpen, setIsResultOpen] = useState(false);
   const [countRight, setCountRight] = useState(7);
+  const [checked, setChecked] = useState(false);
+
   const length = quiz.length;
 
   const nextQuestion = () => {
-    setCurrent(current === length - 1 ? 0 : current + 1);
+    if (current === length - 1) {
+      viewResult();
+    }
+    setCurrent(current === length - 1 ? length - 1 : current + 1);
     const progressPercent = +(((current + 1) / length) * 100).toFixed(0);
     setPercent(progressPercent);
+    setChecked(false);
   };
 
   const viewResult = () => {
@@ -56,25 +62,12 @@ const QuizPage = ({ quiz, setPage, setQuiz }: QuizPageProp) => {
               />
             </div>
           )}
-          <Quiz quiz={quiz[current]} />
-          <div className="quiz-page__actions">
-            <button
-              className={current < length - 1 ? 'btn btn--next' : 'btn btn--d-next'}
-              disabled={current < length - 1 ? false : true}
-              onClick={nextQuestion}
-            >
-              Next Question
-            </button>
-            {current === length - 1 && (
-              <button
-                className="btn btn--result"
-                disabled={isResultOpen ? true : false}
-                onClick={viewResult}
-              >
-                View Results
-              </button>
-            )}
-          </div>
+          <Quiz
+            next={nextQuestion}
+            checked={checked}
+            setChecked={setChecked}
+            quiz={quiz[current]}
+          />
         </div>
       )}
       {isResultOpen && (

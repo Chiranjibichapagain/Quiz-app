@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import { QuizProp } from '../../componentTypes';
 
 import './quiz.scss';
-const Quiz = ({ quiz }: QuizProp) => {
-  const [checked, setChecked] = useState(false);
+const Quiz = ({ quiz, checked, setChecked, next }: any) => {
   const answers = quiz && [quiz.correct, ...quiz.wrong];
   const shuffeledAnswers = answers && answers.sort(() => Math.random() - 0.5);
 
-  const checkAnswer = (item: string) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    event.preventDefault();
     setChecked(true);
+    setTimeout(() => {
+      next();
+    }, 3000);
   };
 
   const className = (item: string) => {
@@ -19,7 +22,7 @@ const Quiz = ({ quiz }: QuizProp) => {
       if (item === quiz.correct) {
         return 'quiz__answer quiz__answer--correct';
       } else {
-        return 'quiz__answer quiz__answer--correct';
+        return 'quiz__answer quiz__answer--incorrect';
       }
     }
   };
@@ -34,7 +37,7 @@ const Quiz = ({ quiz }: QuizProp) => {
           </h1>
           <div className="quiz__answers">
             {shuffeledAnswers.map((item: string, index: number) => (
-              <button onClick={() => checkAnswer(item)} className={className(item)} key={index}>
+              <button onClick={handleClick} className={className(item)} key={index}>
                 {item.replaceAll('&#039;', "'").replaceAll('&rsquo;', "'")}
               </button>
             ))}
