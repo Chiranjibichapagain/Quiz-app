@@ -23,6 +23,13 @@
   }
 }
 
+.progress {
+  &__percent {
+    color: $text-light;
+    font-size: $text-big;
+  }
+}
+
 .btn {
   border: none;
   font-size: $text-medium;
@@ -44,7 +51,13 @@
   }
 
   &--result {
-    background-color: $secondary;
-    color: $primary;
+    border: 1.5px solid $primary;
+    background-color: rgba(255, 255, 255, 0);
+    color: $text-light;
+  }
+
+  &--result:hover {
+    background-color: $primary;
+    color: $text-light;
   }
 }

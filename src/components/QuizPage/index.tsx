@@ -33,41 +33,48 @@ const QuizPage = ({ quiz, setPage, setQuiz }: QuizPageProp) => {
 
   return (
     <div className="quiz-page">
-      {quiz.length === 0 && (
+      {!result && (
         <div>
-          <h3 className="quiz-page__message">Oops! couldn't load the quiz!</h3>
-          <div className="quiz-page__loader">
-            <HashLoader size={150} color="white" />
+          {quiz.length === 0 && (
+            <div>
+              <h3 className="quiz-page__message">Oops! couldn't load the quiz!</h3>
+              <div className="quiz-page__loader">
+                <HashLoader size={150} color="white" />
+              </div>
+            </div>
+          )}
+          {quiz.length > 0 && (
+            <div className="progress">
+              <p className="progress__percent">{percent}%</p>
+              <Line
+                className="progress__line"
+                percent={percent}
+                strokeWidth={1}
+                strokeColor="#fa562c"
+              />
+            </div>
+          )}
+          <Quiz quiz={quiz[current]} />
+          <div className="quiz-page__actions">
+            <button
+              className={current < length - 1 ? 'btn btn--next' : 'btn btn--d-next'}
+              disabled={current < length - 1 ? false : true}
+              onClick={nextQuestion}
+            >
+              Next Question
+            </button>
+            {current === length - 1 && (
+              <button
+                className="btn btn--result"
+                disabled={result ? true : false}
+                onClick={viewResult}
+              >
+                View Results
+              </button>
+            )}
           </div>
         </div>
       )}
-      {quiz.length > 0 && (
-        <div className="progress">
-          <p className="progress__percent">{percent}%</p>
-          <Line percent={percent} strokeWidth={1} strokeColor="#fa562c" />
-        </div>
-      )}
-      <div>
-        <Quiz quiz={quiz[current]} />
-        <div className="quiz-page__actions">
-          <button
-            className={current < length - 1 ? 'btn btn--next' : 'btn btn--d-next'}
-            disabled={current < length - 1 ? false : true}
-            onClick={nextQuestion}
-          >
-            Next Question
-          </button>
-          {current === length - 1 && (
-            <button
-              className="btn btn--result"
-              disabled={result ? true : false}
-              onClick={viewResult}
-            >
-              View Results
-            </button>
-          )}
-        </div>
-      </div>
       {result && <h1>Your final result</h1>}
       {result && (
         <button className="btn btn--new-questions" onClick={newSet}>
