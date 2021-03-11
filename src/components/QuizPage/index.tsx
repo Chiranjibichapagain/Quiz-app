@@ -5,23 +5,25 @@ import { Line } from 'rc-progress';
 import { QuizPageProp } from '../../componentTypes';
 import Quiz from '../Quiz';
 import './quizPage.scss';
+import Result from '../Result';
 
 const QuizPage = ({ quiz, setPage, setQuiz }: QuizPageProp) => {
   const [current, setCurrent] = useState<number>(0);
   const [percent, setPercent] = useState(0);
-  const [result, setResult] = useState(false);
+  const [isResultOpen, setIsResultOpen] = useState(false);
+  const [countRight, setCountRight] = useState(7);
   const length = quiz.length;
 
   const nextQuestion = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
-    const progressPercent = ((current + 1) / length) * 100;
+    const progressPercent = +(((current + 1) / length) * 100).toFixed(0);
     setPercent(progressPercent);
   };
 
   const viewResult = () => {
     setPercent(100);
     setTimeout(() => {
-      setResult(true);
+      setIsResultOpen(true);
     }, 2000);
   };
 
@@ -33,7 +35,7 @@ const QuizPage = ({ quiz, setPage, setQuiz }: QuizPageProp) => {
 
   return (
     <div className="quiz-page">
-      {!result && (
+      {!isResultOpen && (
         <div>
           {quiz.length === 0 && (
             <div>
@@ -66,7 +68,7 @@ const QuizPage = ({ quiz, setPage, setQuiz }: QuizPageProp) => {
             {current === length - 1 && (
               <button
                 className="btn btn--result"
-                disabled={result ? true : false}
+                disabled={isResultOpen ? true : false}
                 onClick={viewResult}
               >
                 View Results
@@ -75,11 +77,13 @@ const QuizPage = ({ quiz, setPage, setQuiz }: QuizPageProp) => {
           </div>
         </div>
       )}
-      {result && <h1>Your final result</h1>}
-      {result && (
-        <button className="btn btn--new-questions" onClick={newSet}>
-          New Questions set
-        </button>
+      {isResultOpen && (
+        <div className="quiz-page__result-box">
+          <Result rightAnswers={countRight} total={length} />
+          <button className="btn btn--result" onClick={newSet}>
+            New Questions set
+          </button>
+        </div>
       )}
     </div>
   );

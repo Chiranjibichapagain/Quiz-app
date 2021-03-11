@@ -1,0 +1,24 @@
+@import '../../config';
+
+.result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__heading {
+    color: $text-light;
+    font-size: $text-xl;
+    background-color: $primary;
+    padding: 10px 20px;
+    border-radius: $radius-big;
+    margin-bottom: 15px;
+  }
+
+  &__total {
+    color: $text-light;
+    margin-bottom: 15px;
+    font-size: $text-medium;
+    font-weight: bold;
+  }
+}
