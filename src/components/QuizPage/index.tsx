@@ -33,28 +33,47 @@ const QuizPage = ({ quiz, setPage, setQuiz }: QuizPageProp) => {
 
   return (
     <div className="quiz-page">
-      {quiz.length === 0 && <HashLoader size={150} color="white" />}
-      {quiz.length >= 0 && (
+      {quiz.length === 0 && (
         <div>
-          <p>`{percent}%`</p>
+          <h3 className="quiz-page__message">Oops! couldn't load the quiz!</h3>
+          <div className="quiz-page__loader">
+            <HashLoader size={150} color="white" />
+          </div>
+        </div>
+      )}
+      {quiz.length > 0 && (
+        <div className="progress">
+          <p className="progress__percent">{percent}%</p>
           <Line percent={percent} strokeWidth={1} strokeColor="#fa562c" />
         </div>
       )}
-      {quiz.length >= 0 && !result && (
-        <div>
-          <Quiz quiz={quiz[current]} />
-          <button disabled={current === length - 1 ? true : false} onClick={nextQuestion}>
+      <div>
+        <Quiz quiz={quiz[current]} />
+        <div className="quiz-page__actions">
+          <button
+            className={current < length - 1 ? 'btn btn--next' : 'btn btn--d-next'}
+            disabled={current < length - 1 ? false : true}
+            onClick={nextQuestion}
+          >
             Next Question
           </button>
           {current === length - 1 && (
-            <button disabled={result ? true : false} onClick={viewResult}>
+            <button
+              className="btn btn--result"
+              disabled={result ? true : false}
+              onClick={viewResult}
+            >
               View Results
             </button>
           )}
         </div>
-      )}
-      {result && <button onClick={newSet}>New Questions set</button>}
+      </div>
       {result && <h1>Your final result</h1>}
+      {result && (
+        <button className="btn btn--new-questions" onClick={newSet}>
+          New Questions set
+        </button>
+      )}
     </div>
   );
 };

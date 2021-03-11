@@ -1,0 +1,33 @@
+@import '../../config';
+
+.quiz {
+  width: 100%;
+  height: 450px;
+  margin: 20px 0px;
+  background-color: rgba(255, 255, 255, 0.753);
+  padding: 30px 80px;
+  border-radius: $radius-big;
+
+  &__question {
+    width: 500px;
+    font-size: $text-medium;
+    margin-bottom: 30px;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  &__answers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__answer {
+    border: 1px solid $text-dark;
+    border-radius: $radius-small;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: $text-medium;
+    padding: 10px;
+    width: 500px;
+    margin: 10px 0px;
+  }
+}
