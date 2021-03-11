@@ -2,15 +2,18 @@ import React, { useState } from 'react';
 import { QuizProp } from '../../componentTypes';
 
 import './quiz.scss';
-const Quiz = ({ quiz, checked, setChecked, next }: any) => {
+const Quiz = ({ quiz, checked, setChecked, next, count, setCount }: any) => {
   const [btnIsDisabled, setBtnIsDisabled] = useState(false);
   const answers = quiz && [quiz.correct, ...quiz.wrong];
   const shuffeledAnswers = answers && answers.sort(() => Math.random() - 0.5);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, item: string) => {
     event.preventDefault();
     setBtnIsDisabled(true);
     setChecked(true);
+    if (item === quiz.correct) {
+      setCount(count + 1);
+    }
     setTimeout(() => {
       next();
       setBtnIsDisabled(false);
@@ -42,7 +45,9 @@ const Quiz = ({ quiz, checked, setChecked, next }: any) => {
             {shuffeledAnswers.map((item: string, index: number) => (
               <button
                 disabled={btnIsDisabled ? true : false}
-                onClick={handleClick}
+                onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+                  handleClick(event, item)
+                }
                 className={className(item)}
                 key={index}
               >
