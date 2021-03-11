@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { QuizProp } from '../../componentTypes';
 
 const Quiz = ({ quiz }: QuizProp) => {
   const answers = quiz && [quiz.correct, ...quiz.wrong];
   const shuffeledAnswers = answers && answers.sort(() => Math.random() - 0.5);
-  console.log('answers', shuffeledAnswers);
-  console.log('correct answer--', quiz && quiz.correct);
 
   return (
     <div style={{ backgroundColor: 'white' }}>

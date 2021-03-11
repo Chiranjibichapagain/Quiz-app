@@ -40,8 +40,6 @@ const App = () => {
     setNumber('');
   };
 
-  console.log('all data', quiz, error);
-
   return (
     <div className="app">
       <Nav setPage={setPage} />
