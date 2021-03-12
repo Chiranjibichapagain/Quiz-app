@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+
 import { QuizProp } from '../../componentTypes';
 
 import './quiz.scss';
+
 const Quiz = ({ quiz, checked, setChecked, next, count, setCount }: QuizProp) => {
   const [btnIsDisabled, setBtnIsDisabled] = useState(false);
   const answers = quiz && [quiz.correct, ...quiz.wrong];

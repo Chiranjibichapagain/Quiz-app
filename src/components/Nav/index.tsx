@@ -2,17 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
 import logo from '../../assets/quiz.svg';
-import { NavProp } from '../../componentTypes';
-import './nav.scss';
+import { NavProp, UserData } from '../../componentTypes';
 
-type UserData = {
-  email: string;
-  familyName: string;
-  givenName: string;
-  googleId: string;
-  imageUrl: string;
-  name: string;
-};
+import './nav.scss';
 
 const Nav = ({ setPage }: NavProp) => {
   const [log, setLog] = useState<boolean>(false);

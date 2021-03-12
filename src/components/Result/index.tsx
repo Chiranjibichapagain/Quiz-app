@@ -2,7 +2,9 @@ import React from 'react';
 import { PieChart } from 'react-minimal-pie-chart';
 
 import { ResultProp } from '../../componentTypes';
+
 import './result.scss';
+
 const Result = ({ rightAnswers, total }: ResultProp) => {
   const incorrect = total - rightAnswers;
   return (

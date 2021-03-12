@@ -4,8 +4,9 @@ import { Line } from 'rc-progress';
 
 import { QuizPageProp } from '../../componentTypes';
 import Quiz from '../Quiz';
-import './quizPage.scss';
 import Result from '../Result';
+
+import './quizPage.scss';
 
 const QuizPage = ({ quiz, setPage, setQuiz }: QuizPageProp) => {
   const [current, setCurrent] = useState<number>(0);
