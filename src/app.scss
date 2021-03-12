@@ -79,3 +79,39 @@ label {
     }
   }
 }
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    font-family: 'Roboto', sans-serif;
+    font-size: $text-big;
+    margin-bottom: 40px;
+  }
+
+  &__message {
+    font-size: $text-medium;
+    color: $primary;
+    font-weight: bold;
+  }
+
+  &__btn {
+    font-size: $text-medium;
+    border: 1px solid $primary;
+    border-radius: $radius-small;
+    padding: 8px 35px;
+    background-color: $primary;
+    margin-top: 30px;
+    color: $text-light;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0);
+      color: $primary;
+    }
+  }
+}

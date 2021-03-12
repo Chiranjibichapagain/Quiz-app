@@ -43,6 +43,7 @@ const App = () => {
       setIsModalOpen(true);
     } else {
       const url = `https://opentdb.com/api.php?amount=${number}&category=${category}&difficulty=${level}&type=${type}`;
+      console.log('url---', url);
       setPage('quiz');
       fetchData(url);
       setNumber('');
@@ -55,7 +56,7 @@ const App = () => {
       top: '20%',
       left: '33%',
       right: 'auto',
-      height: '300px'
+      height: '220px'
     }
   };
 
@@ -108,9 +109,13 @@ const App = () => {
             onRequestClose={() => setIsModalOpen(false)}
             style={modalStyle}
           >
-            <h2>Are you logged in?</h2>
-            <p>To use the quiz app please log in. </p>
-            <button onClick={() => setIsModalOpen(false)}>Ok</button>
+            <div className="modal">
+              <h2 className="modal__title">Are you logged in?</h2>
+              <p className="modal__message">To use the quiz app please log in. Thank you! </p>
+              <button className="modal__btn" onClick={() => setIsModalOpen(false)}>
+                Ok
+              </button>
+            </div>
           </Modal>
           <button onClick={startQuiz} className="home-main__btn">
             Let's Go

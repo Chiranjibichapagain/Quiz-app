@@ -45,7 +45,7 @@ const QuizPage = ({ quiz, setPage, setQuiz }: QuizPageProp) => {
       {!isResultOpen && (
         <div>
           {quiz.length === 0 && (
-            <div>
+            <div className="quiz-page__loder-div">
               <h3 className="quiz-page__message">Loading Quiz..!</h3>
               <div className="quiz-page__loader">
                 <HashLoader size={150} color="white" />
