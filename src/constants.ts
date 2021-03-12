@@ -23,14 +23,12 @@ export const categories: OptionCategoryType[] = [
 ];
 
 export const difficultyLevel: OptionType[] = [
-  { value: 'any', label: 'Any Difficulty' },
   { value: 'easy', label: 'Easy' },
   { value: 'medium', label: 'Medium' },
   { value: 'hard', label: 'Hard' }
 ];
 
 export const questionType: OptionType[] = [
-  { value: 'any', label: 'Any Type' },
   { value: 'multiple', label: 'Multiple Choice' },
   { value: 'boolean', label: 'True/False' }
 ];
