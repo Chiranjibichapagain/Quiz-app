@@ -46,7 +46,7 @@ const Nav = ({ setPage }: NavProp) => {
   const googleClient = process.env.REACT_APP_GOOGLE_API as string;
   return (
     <div className="nav">
-      <img onClick={() => setPage('home')} className="logo" src={logo} alt="logo" />
+      <img onClick={() => setPage('home')} className="nav__logo" src={logo} alt="logo" />
       {!userData ? (
         <GoogleLogin
           clientId={googleClient}
@@ -56,7 +56,17 @@ const Nav = ({ setPage }: NavProp) => {
           cookiePolicy={'single_host_origin'}
         />
       ) : (
-        <GoogleLogout clientId={googleClient} buttonText="Log Out" onLogoutSuccess={handleLogout} />
+        <div className="nav__log-div">
+          <GoogleLogout
+            clientId={googleClient}
+            buttonText="Log Out"
+            onLogoutSuccess={handleLogout}
+          />
+          <div className="nav__profile-div">
+            <img className="nav__profile-img" src={userData.imageUrl} alt={userData.imageUrl} />
+            <p className="nav__profile-name">{` Hi ${userData.givenName}`}</p>
+          </div>
+        </div>
       )}
     </div>
   );

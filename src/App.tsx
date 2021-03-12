@@ -15,6 +15,7 @@ const App = () => {
   const [type, setType] = useState<string>('');
   const [quiz, setQuiz] = useState<QuizType[] | []>([]);
   const [error, setError] = useState<string>('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const fetchData = async (url: string) => {
     try {
@@ -34,6 +35,10 @@ const App = () => {
 
   const startQuiz = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event?.preventDefault();
+    const userInfo = localStorage.getItem('quiz-user-info');
+    if (!userInfo) {
+      setIsModalOpen(true);
+    }
     const url = `https://opentdb.com/api.php?amount=${number}&category=${category}&difficulty=${level}&type=${type}`;
     setPage('quiz');
     fetchData(url);
