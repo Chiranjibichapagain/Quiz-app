@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
+import Modal from 'react-modal';
 
 import Nav from './components/Nav';
 import { categories, difficultyLevel, questionType } from './constants';
@@ -7,6 +8,7 @@ import './app.scss';
 import QuizPage from './components/QuizPage';
 import { QuizType } from './componentTypes';
 
+Modal.setAppElement('#root');
 const App = () => {
   const [page, setPage] = useState<string>('home');
   const [number, setNumber] = useState<number | string>('');
@@ -36,13 +38,25 @@ const App = () => {
   const startQuiz = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event?.preventDefault();
     const userInfo = localStorage.getItem('quiz-user-info');
+    console.log('test--', userInfo);
     if (!userInfo) {
       setIsModalOpen(true);
+    } else {
+      const url = `https://opentdb.com/api.php?amount=${number}&category=${category}&difficulty=${level}&type=${type}`;
+      setPage('quiz');
+      fetchData(url);
+      setNumber('');
     }
-    const url = `https://opentdb.com/api.php?amount=${number}&category=${category}&difficulty=${level}&type=${type}`;
-    setPage('quiz');
-    fetchData(url);
-    setNumber('');
+  };
+
+  const modalStyle = {
+    content: {
+      width: '500px',
+      top: '20%',
+      left: '33%',
+      right: 'auto',
+      height: '300px'
+    }
   };
 
   return (
@@ -89,6 +103,15 @@ const App = () => {
               />
             </div>
           </div>
+          <Modal
+            isOpen={isModalOpen}
+            onRequestClose={() => setIsModalOpen(false)}
+            style={modalStyle}
+          >
+            <h2>Are you logged in?</h2>
+            <p>To use the quiz app please log in. </p>
+            <button onClick={() => setIsModalOpen(false)}>Ok</button>
+          </Modal>
           <button onClick={startQuiz} className="home-main__btn">
             Let's Go
           </button>
