@@ -16,4 +16,23 @@ export type QuizPageProp = {
 
 export type QuizProp = {
   quiz: QuizType;
+  checked: boolean;
+  setChecked: React.Dispatch<React.SetStateAction<boolean>>;
+  next: () => void;
+  count: number;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
+};
+
+export type ResultProp = {
+  rightAnswers: number;
+  total: number;
+};
+
+export type OptionCategoryType = {
+  value: number;
+  label: string;
+};
+export type OptionType = {
+  value: string;
+  label: string;
 };

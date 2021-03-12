@@ -4,9 +4,10 @@ import Modal from 'react-modal';
 
 import Nav from './components/Nav';
 import { categories, difficultyLevel, questionType } from './constants';
-import './app.scss';
 import QuizPage from './components/QuizPage';
 import { QuizType } from './componentTypes';
+
+import './app.scss';
 
 Modal.setAppElement('#root');
 const App = () => {
@@ -17,7 +18,7 @@ const App = () => {
   const [type, setType] = useState<string>('');
   const [quiz, setQuiz] = useState<QuizType[] | []>([]);
   const [error, setError] = useState<string>('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const fetchData = async (url: string) => {
     try {
@@ -38,12 +39,10 @@ const App = () => {
   const startQuiz = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event?.preventDefault();
     const userInfo = localStorage.getItem('quiz-user-info');
-    console.log('test--', userInfo);
     if (!userInfo) {
       setIsModalOpen(true);
     } else {
       const url = `https://opentdb.com/api.php?amount=${number}&category=${category}&difficulty=${level}&type=${type}`;
-      console.log('url---', url);
       setPage('quiz');
       fetchData(url);
       setNumber('');

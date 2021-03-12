@@ -9,10 +9,10 @@ import Result from '../Result';
 
 const QuizPage = ({ quiz, setPage, setQuiz }: QuizPageProp) => {
   const [current, setCurrent] = useState<number>(0);
-  const [percent, setPercent] = useState(0);
-  const [isResultOpen, setIsResultOpen] = useState(false);
-  const [countRight, setCountRight] = useState(0);
-  const [checked, setChecked] = useState(false);
+  const [percent, setPercent] = useState<number>(0);
+  const [isResultOpen, setIsResultOpen] = useState<boolean>(false);
+  const [countRight, setCountRight] = useState<number>(0);
+  const [checked, setChecked] = useState<boolean>(false);
 
   const length = quiz.length;
 
@@ -39,7 +39,6 @@ const QuizPage = ({ quiz, setPage, setQuiz }: QuizPageProp) => {
     setPage('home');
   };
 
-  console.log('count---', countRight);
   return (
     <div className="quiz-page">
       {!isResultOpen && (

@@ -1,11 +1,4 @@
-export type OptionCategoryType = {
-  value: number;
-  label: string;
-};
-export type OptionType = {
-  value: string;
-  label: string;
-};
+import { OptionCategoryType, OptionType } from './componentTypes';
 
 export const categories: OptionCategoryType[] = [
   { value: 9, label: 'General Knowledge' },

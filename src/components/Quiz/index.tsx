@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { QuizProp } from '../../componentTypes';
 
 import './quiz.scss';
-const Quiz = ({ quiz, checked, setChecked, next, count, setCount }: any) => {
+const Quiz = ({ quiz, checked, setChecked, next, count, setCount }: QuizProp) => {
   const [btnIsDisabled, setBtnIsDisabled] = useState(false);
   const answers = quiz && [quiz.correct, ...quiz.wrong];
   const shuffeledAnswers = answers && answers.sort(() => Math.random() - 0.5);

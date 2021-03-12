@@ -15,7 +15,7 @@ type UserData = {
 };
 
 const Nav = ({ setPage }: NavProp) => {
-  const [log, setLog] = useState(false);
+  const [log, setLog] = useState<boolean>(false);
   const [userData, setUserData] = useState<UserData | null>();
 
   const handleLoginSuccess = (response: any) => {
@@ -40,8 +40,6 @@ const Nav = ({ setPage }: NavProp) => {
     localStorage.removeItem('quiz-user-info');
     setLog(false);
   };
-
-  console.log('xxx--', userData);
 
   const googleClient = process.env.REACT_APP_GOOGLE_API as string;
   return (
