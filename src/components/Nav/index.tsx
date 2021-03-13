@@ -10,6 +10,7 @@ const Nav = ({ setPage }: NavProp) => {
   const [log, setLog] = useState<boolean>(false);
   const [userData, setUserData] = useState<UserData | null>();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleLoginSuccess = (response: any) => {
     const data = response.profileObj;
     const stringData = JSON.stringify(data);

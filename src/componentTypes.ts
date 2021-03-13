@@ -45,3 +45,21 @@ export type UserData = {
   imageUrl: string;
   name: string;
 };
+
+export type QuizResponse = {
+  category: string;
+  type: string;
+  difficulty: string;
+  question: string;
+  correct: string;
+  incorrect_answers: string[];
+};
+
+export type Result = {
+  response_code: number;
+  results: QuizResponse;
+};
+
+export type PropType = {
+  option: any;
+};

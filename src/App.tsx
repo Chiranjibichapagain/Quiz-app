@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import Nav from './components/Nav';
 import { categories, difficultyLevel, questionType } from './constants';
 import QuizPage from './components/QuizPage';
-import { QuizType } from './componentTypes';
+import { OptionCategoryType, OptionType, QuizType, Result } from './componentTypes';
 
 import './app.scss';
 
@@ -14,8 +14,8 @@ const App = () => {
   const [page, setPage] = useState<string>('home');
   const [number, setNumber] = useState<number | string>('');
   const [category, setCategory] = useState<number>();
-  const [level, setLevel] = useState<string>('');
-  const [type, setType] = useState<string>('');
+  const [level, setLevel] = useState<string | undefined>('');
+  const [type, setType] = useState<string | undefined>('');
   const [quiz, setQuiz] = useState<QuizType[] | []>([]);
   const [error, setError] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -24,10 +24,10 @@ const App = () => {
     try {
       const data = await (await fetch(url)).json();
       if (data) {
-        const quizData = data.results.map((result: any) => ({
-          question: result.question,
-          correct: result.correct_answer,
-          wrong: result.incorrect_answers
+        const quizData = data.results.map(({ results }: Result) => ({
+          question: results.question,
+          correct: results.correct,
+          wrong: results.incorrect_answers
         }));
         setQuiz(quizData);
       }
@@ -59,6 +59,8 @@ const App = () => {
     }
   };
 
+  console.log('Error--', error);
+
   return (
     <div className="app">
       <Nav setPage={setPage} />
@@ -81,7 +83,7 @@ const App = () => {
                 className="home-main__select"
                 Value={category}
                 options={categories}
-                onChange={(option: any) => setCategory(option.value)}
+                onChange={(option: OptionCategoryType | null) => setCategory(option?.value)}
               />
             </div>
             <div className="home-main__filter-item">
@@ -90,7 +92,7 @@ const App = () => {
                 className="home-main__select"
                 Value={level}
                 options={difficultyLevel}
-                onChange={(option: any) => setLevel(option.value)}
+                onChange={(option: OptionType | null) => setLevel(option?.value)}
               />
             </div>
             <div className="home-main__filter-item">
@@ -99,7 +101,7 @@ const App = () => {
                 className="home-main__select"
                 Value={type}
                 options={questionType}
-                onChange={(option: any) => setType(option.value)}
+                onChange={(option: OptionType | null) => setType(option?.value)}
               />
             </div>
           </div>
