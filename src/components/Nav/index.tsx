@@ -34,7 +34,7 @@ const Nav = ({ setPage }: NavProp) => {
     setLog(false);
   };
 
-  const googleClient = process.env.REACT_APP_GOOGLE_API as string;
+  const googleClient = '1022731832769-0epv227hsfh2rpvsgroeg558uttkhg4b.apps.googleusercontent.com';
   return (
     <div className="nav">
       <img onClick={() => setPage('home')} className="nav__logo" src={logo} alt="logo" />
