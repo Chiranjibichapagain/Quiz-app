@@ -40,10 +40,7 @@ const Quiz = ({ quiz, checked, setChecked, next, count, setCount }: QuizProp) =>
       {quiz && (
         <div className="quiz">
           {' '}
-          <h1 className="quiz__question">
-            {decode(quiz.question)}
-            {/* {quiz.question.replaceAll('&quot;', "''").replaceAll('&#039;', "'")} */}
-          </h1>
+          <h1 className="quiz__question">{decode(quiz.question)}</h1>
           <div className="quiz__answers">
             {shuffeledAnswers.map((item: string, index: number) => (
               <button

@@ -59,7 +59,7 @@ const App = () => {
     }
   };
 
-  console.log('Error--', error, quiz);
+  console.log('Error--', error);
 
   return (
     <div className="app">
