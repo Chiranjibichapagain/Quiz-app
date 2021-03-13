@@ -51,15 +51,15 @@ export type QuizResponse = {
   type: string;
   difficulty: string;
   question: string;
-  correct: string;
+  correct_answer: string;
   incorrect_answers: string[];
 };
 
-export type Result = {
-  response_code: number;
-  results: QuizResponse;
-};
+// export type Result = {
+//   response_code: number;
+//   results: QuizResponse;
+// };
 
-export type PropType = {
-  option: any;
-};
+// export type PropType = {
+//   option: any;
+// };

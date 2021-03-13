@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import Nav from './components/Nav';
 import { categories, difficultyLevel, questionType } from './constants';
 import QuizPage from './components/QuizPage';
-import { OptionCategoryType, OptionType, QuizType, Result } from './componentTypes';
+import { OptionCategoryType, OptionType, QuizResponse, QuizType } from './componentTypes';
 
 import './app.scss';
 
@@ -23,10 +23,11 @@ const App = () => {
   const fetchData = async (url: string) => {
     try {
       const data = await (await fetch(url)).json();
+      console.log('try--', data);
       if (data) {
-        const quizData = data.results.map(({ results }: Result) => ({
+        const quizData = data.results.map((results: QuizResponse) => ({
           question: results.question,
-          correct: results.correct,
+          correct: results.correct_answer,
           wrong: results.incorrect_answers
         }));
         setQuiz(quizData);
@@ -59,7 +60,7 @@ const App = () => {
     }
   };
 
-  console.log('Error--', error);
+  console.log('Error--', error, quiz);
 
   return (
     <div className="app">
