@@ -11,7 +11,7 @@ This is a quiz application. The quiz questions and answers are fetched from Open
 
 ## How to run locally?
 
-* Git clone https://github.com/Chiranjibichapagain/Quiz-app
+* Git clone https://github.com/Chiranjibichapagain/Quiz-app.git
 * npm install
 * cd quiz-app
 * npm start
