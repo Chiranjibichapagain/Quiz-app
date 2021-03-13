@@ -17,6 +17,6 @@ This is a quiz application. The quiz questions and answers are fetched from Open
 * npm start
 
 ## Developer
-CHIRANJIBI CHAPAGAIN
-Github: https://github.com/Chiranjibichapagain
+CHIRANJIBI CHAPAGAIN  
+Github: https://github.com/Chiranjibichapagain  
 Portfolio: https://chiranjibichapagain-portfolio.netlify.app/
