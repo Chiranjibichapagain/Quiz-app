@@ -9,8 +9,7 @@ const Quiz = ({ quiz, checked, setChecked, next, count, setCount }: QuizProp) =>
   const answers = quiz && [quiz.correct, ...quiz.wrong];
   const shuffeledAnswers = answers && answers.sort(() => Math.random() - 0.5);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, item: string) => {
-    event.preventDefault();
+  const handleClick = (item: string) => {
     setBtnIsDisabled(true);
     setChecked(true);
     if (item === quiz.correct) {
@@ -47,13 +46,18 @@ const Quiz = ({ quiz, checked, setChecked, next, count, setCount }: QuizProp) =>
             {shuffeledAnswers.map((item: string, index: number) => (
               <button
                 disabled={btnIsDisabled ? true : false}
-                onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
-                  handleClick(event, item)
-                }
+                onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+                  event.preventDefault(), handleClick(item);
+                }}
                 className={className(item)}
                 key={index}
               >
-                {item.replaceAll('&#039;', "'").replaceAll('&rsquo;', "'")}
+                {item
+                  .replaceAll('&#039;', "'")
+                  .replaceAll('&rsquo;', "'")
+                  .replaceAll('&oacute;', 'Ó')
+                  .replaceAll('&iacute;', 'í')
+                  .replaceAll('&aacute;', 'á')}
               </button>
             ))}
           </div>
