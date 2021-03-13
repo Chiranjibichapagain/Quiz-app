@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { decode } from 'html-entities';
 
 import { QuizProp } from '../../componentTypes';
 
@@ -40,7 +41,8 @@ const Quiz = ({ quiz, checked, setChecked, next, count, setCount }: QuizProp) =>
         <div className="quiz">
           {' '}
           <h1 className="quiz__question">
-            {quiz.question.replaceAll('&quot;', "''").replaceAll('&#039;', "'")}
+            {decode(quiz.question)}
+            {/* {quiz.question.replaceAll('&quot;', "''").replaceAll('&#039;', "'")} */}
           </h1>
           <div className="quiz__answers">
             {shuffeledAnswers.map((item: string, index: number) => (
@@ -52,12 +54,7 @@ const Quiz = ({ quiz, checked, setChecked, next, count, setCount }: QuizProp) =>
                 className={className(item)}
                 key={index}
               >
-                {item
-                  .replaceAll('&#039;', "'")
-                  .replaceAll('&rsquo;', "'")
-                  .replaceAll('&oacute;', 'Ó')
-                  .replaceAll('&iacute;', 'í')
-                  .replaceAll('&aacute;', 'á')}
+                {decode(item)}
               </button>
             ))}
           </div>

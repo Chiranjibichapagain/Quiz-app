@@ -23,7 +23,6 @@ const App = () => {
   const fetchData = async (url: string) => {
     try {
       const data = await (await fetch(url)).json();
-      console.log('try--', data);
       if (data) {
         const quizData = data.results.map((results: QuizResponse) => ({
           question: results.question,
