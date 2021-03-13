@@ -69,8 +69,9 @@ const App = () => {
           <h1 className="home-main__heading">WELCOME TO THE QUIZ APP</h1>
           <div className="home-main__quiz-filter">
             <div className="home-main__filter-item">
-              <label>Questions</label>
+              <label className="home-main__label">Questions</label>
               <input
+                placeholder="Number of questions"
                 value={number}
                 className="home-main__input"
                 onChange={({ target }) => setNumber(target.value)}
@@ -78,7 +79,7 @@ const App = () => {
               />
             </div>
             <div className="home-main__filter-item">
-              <label>Category</label>
+              <label className="home-main__label">Category</label>
               <Select
                 className="home-main__select"
                 Value={category}
@@ -87,7 +88,7 @@ const App = () => {
               />
             </div>
             <div className="home-main__filter-item">
-              <label>Difficulty</label>
+              <label className="home-main__label">Difficulty</label>
               <Select
                 className="home-main__select"
                 Value={level}
@@ -96,7 +97,7 @@ const App = () => {
               />
             </div>
             <div className="home-main__filter-item">
-              <label>Question Type</label>
+              <label className="home-main__label">Question Type</label>
               <Select
                 className="home-main__select"
                 Value={type}

@@ -56,9 +56,14 @@ label {
   }
 
   &__input {
-    padding: 10px 5px;
-    border-radius: 6px;
+    padding: 10px;
+    border-radius: 4px;
     border: none;
+  }
+
+  &__label {
+    font-family: 'Roboto', sans-serif;
+    font-size: $text-medium;
   }
 
   &__btn {
