@@ -30,7 +30,7 @@ label {
   align-items: center;
 
   &__heading {
-    font-family: $roboto-big;
+    font-family: 'Roboto', sans-serif;
     color: $text-light;
     font-size: 45px;
     font-weight: bold;
@@ -128,6 +128,44 @@ label {
   }
 
   .home-main {
-    padding: 10px 30px;
+    padding: 10px 20px;
+
+    &__heading {
+      text-align: center;
+      line-height: 65px;
+      margin: 20px 0px;
+    }
+
+    &__quiz-filter {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    &__filter-item {
+      margin-bottom: 25px;
+    }
+
+    &__label {
+      margin: 0px 0px 15px 0px;
+    }
+
+    &__btn {
+      margin-top: 20px;
+    }
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  .home-main {
+    padding: 7px;
+
+    &__select {
+      width: 300px;
+    }
+
+    &__input {
+      width: 300px;
+    }
   }
 }
