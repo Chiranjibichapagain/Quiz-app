@@ -1,7 +1,7 @@
 @import '../../config';
 
 .nav {
-  width: 100vw;
+  max-width: 100vw;
   height: 100px;
   background: $text-light;
   padding: 10px 80px;
