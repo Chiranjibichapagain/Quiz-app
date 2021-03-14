@@ -120,3 +120,14 @@ label {
     }
   }
 }
+
+@media only screen and (max-width: 1024px) {
+  body {
+    background-image: url('./assets/s-screen-back.png');
+    background-color: #142a3f;
+  }
+
+  .home-main {
+    padding: 10px 30px;
+  }
+}
