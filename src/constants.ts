@@ -31,7 +31,7 @@ export const screenGreaterThan = () => {
     const style = { width: 230, height: 50, font: 18 };
     return style;
   } else if (window.innerWidth < 415) {
-    const style = { width: 300, height: 80, font: 22 };
+    const style = { width: 300, height: 60, font: 22 };
     return style;
   } else {
     const style = { width: 530, height: 80, font: 28 };

@@ -170,6 +170,7 @@ body {
       }
 
       &__input {
+        height: 60px;
         width: 300px;
         font-size: 22px;
       }
@@ -180,6 +181,8 @@ body {
 
       &__btn {
         width: 300px;
+        height: 60px;
+        padding: 5px;
       }
     }
   }
