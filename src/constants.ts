@@ -25,3 +25,16 @@ export const questionType: OptionType[] = [
   { value: 'multiple', label: 'Multiple Choice' },
   { value: 'boolean', label: 'True/False' }
 ];
+
+export const screenGreaterThan = () => {
+  if (window.innerWidth > 1024) {
+    const style = { width: 230, height: 50, font: 18 };
+    return style;
+  } else if (window.innerWidth < 415) {
+    const style = { width: 300, height: 80, font: 22 };
+    return style;
+  } else {
+    const style = { width: 530, height: 80, font: 28 };
+    return style;
+  }
+};

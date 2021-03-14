@@ -12,18 +12,9 @@ body {
   background-size: cover;
 }
 
-label {
-  margin-bottom: 15px;
-  font-family: $roboto;
-  color: $text-light;
-  margin-left: 10px;
-  font-size: $text-medium;
-  font-weight: bold;
-  letter-spacing: 1.5px;
-}
-
 .home-main {
-  padding: 20px 300px;
+  max-width: 100vw;
+  padding: 20px 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,26 +27,25 @@ label {
     font-weight: bold;
     letter-spacing: 2px;
     margin: 100px 0px;
+    text-shadow: 2px 2px #0e1730c9;
   }
 
   &__quiz-filter {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-top: 40px;
   }
 
   &__filter-item {
     display: flex;
     flex-direction: column;
-  }
-
-  &__select {
-    width: 220px;
+    align-items: center;
   }
 
   &__input {
+    width: 230px;
+    height: 50px;
     padding: 10px;
     border-radius: 4px;
     border: none;
@@ -63,7 +53,13 @@ label {
 
   &__label {
     font-family: 'Roboto', sans-serif;
-    font-size: $text-medium;
+    margin-bottom: 15px;
+    font-family: $roboto;
+    color: $text-light;
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
   }
 
   &__btn {
@@ -126,46 +122,67 @@ label {
     background-image: url('./assets/s-screen-back.png');
     background-color: #142a3f;
   }
-
   .home-main {
-    padding: 10px 20px;
+    padding: 20px;
 
     &__heading {
-      text-align: center;
-      line-height: 65px;
       margin: 20px 0px;
-    }
-
-    &__quiz-filter {
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-    }
-
-    &__filter-item {
-      margin-bottom: 25px;
     }
 
     &__label {
       margin: 0px 0px 15px 0px;
+      font-size: 30px;
+    }
+
+    &__input {
+      font-size: 28px;
+    }
+
+    &__quiz-filter {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &__filter-item {
+      margin-bottom: 45px;
+    }
+
+    &__input {
+      width: 530px;
+      height: 80px;
     }
 
     &__btn {
-      margin-top: 20px;
+      margin-top: 10px;
+      width: 530px;
+      height: 70px;
+      font-size: $text-big;
     }
   }
 }
 
-@media only screen and (max-width: 568px) {
-  .home-main {
-    padding: 7px;
+@media only screen and (max-width: 768px) {
+  body {
+    .home-main {
+      &__heading {
+        font-size: $text-big;
+        text-align: center;
+      }
 
-    &__select {
-      width: 300px;
-    }
+      &__input {
+        width: 300px;
+        font-size: 22px;
+      }
 
-    &__input {
-      width: 300px;
+      &__label {
+        font-size: $text-medium;
+      }
+
+      &__btn {
+        width: 300px;
+      }
     }
   }
+}
+@media only screen and (max-width: 600px) {
 }

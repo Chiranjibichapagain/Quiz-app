@@ -3,7 +3,7 @@ import Select from 'react-select';
 import Modal from 'react-modal';
 
 import Nav from './components/Nav';
-import { categories, difficultyLevel, questionType } from './constants';
+import { categories, difficultyLevel, questionType, screenGreaterThan } from './constants';
 import QuizPage from './components/QuizPage';
 import { OptionCategoryType, OptionType, QuizResponse, QuizType } from './componentTypes';
 
@@ -59,6 +59,15 @@ const App = () => {
     }
   };
 
+  const selectStyle = {
+    control: (styles: any) => ({
+      ...styles,
+      width: screenGreaterThan().width,
+      height: screenGreaterThan().height,
+      fontSize: screenGreaterThan().font
+    })
+  };
+
   console.log('Error--', error);
 
   return (
@@ -81,6 +90,8 @@ const App = () => {
             <div className="home-main__filter-item">
               <label className="home-main__label">Category</label>
               <Select
+                placeholder="Choose a Category"
+                styles={selectStyle}
                 className="home-main__select"
                 Value={category}
                 options={categories}
@@ -90,6 +101,8 @@ const App = () => {
             <div className="home-main__filter-item">
               <label className="home-main__label">Difficulty</label>
               <Select
+                placeholder="Choose a difficulty Level"
+                styles={selectStyle}
                 className="home-main__select"
                 Value={level}
                 options={difficultyLevel}
@@ -99,6 +112,8 @@ const App = () => {
             <div className="home-main__filter-item">
               <label className="home-main__label">Question Type</label>
               <Select
+                placeholder="Choose a question Type"
+                styles={selectStyle}
                 className="home-main__select"
                 Value={type}
                 options={questionType}
