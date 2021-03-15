@@ -50,13 +50,16 @@ const App = () => {
   };
 
   const modalStyle = {
-    content: {
-      width: '500px',
-      top: '20%',
-      left: '33%',
-      right: 'auto',
-      height: '220px'
-    }
+    content:
+      window.innerWidth > 1024
+        ? {
+            width: '300px',
+            top: '20%',
+            left: '33%',
+            right: 'auto',
+            height: '220px'
+          }
+        : {}
   };
 
   const selectStyle = {
