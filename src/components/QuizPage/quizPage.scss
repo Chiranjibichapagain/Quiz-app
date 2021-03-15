@@ -23,11 +23,7 @@
     margin-top: 150px;
   }
 
-  &__actions {
-    display: flex;
-    justify-content: flex-end;
-  }
-
+ 
   &__result-box {
     display: flex;
     flex-direction: column;
@@ -65,10 +61,13 @@
   }
 }
 
-@media only screen and (max-width: 1024px) {
-}
+
 
 @media only screen and (max-width: 600px) {
+  .quiz-page{
+    margin:10px;
+    padding: 10px;
+  }
 }
 // @media only screen and (max-width: 1024px) {
 // }

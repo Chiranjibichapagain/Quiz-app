@@ -48,3 +48,28 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .quiz{
+    padding: 10px;
+    &__question {
+      width: 300px;
+    }
+
+    &__answer {
+      width: 300px;
+    }
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .quiz{
+    &__question {
+      width: 280px;
+    }
+
+    &__answer {
+      width: 280px;
+    }
+  }
+}

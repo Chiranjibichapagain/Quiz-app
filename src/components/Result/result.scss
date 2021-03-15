@@ -23,3 +23,15 @@
     font-weight: bold;
   }
 }
+
+
+@media only screen and (max-width: 600px) {
+  .result{
+    padding: 10px;
+    &__heading {
+      font-size: $text-medium
+    }
+
+    
+  }
+}
