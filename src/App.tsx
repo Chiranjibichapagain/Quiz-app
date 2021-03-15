@@ -101,7 +101,7 @@ const App = () => {
             <div className="home-main__filter-item">
               <label className="home-main__label">Difficulty</label>
               <Select
-                placeholder="Choose a difficulty Level"
+                placeholder="Choose difficulty Level"
                 styles={selectStyle}
                 className="home-main__select"
                 Value={level}
