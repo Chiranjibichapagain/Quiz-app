@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { decode } from 'html-entities';
 
 import { QuizProp } from '../../componentTypes';
@@ -7,8 +7,18 @@ import './quiz.scss';
 
 const Quiz = ({ quiz, checked, setChecked, next, count, setCount }: QuizProp) => {
   const [btnIsDisabled, setBtnIsDisabled] = useState(false);
-  const answers = quiz && [quiz.correct, ...quiz.wrong];
-  const shuffeledAnswers = answers && answers.sort(() => Math.random() - 0.5);
+  const [ans, setAns] = useState<string[]>([]);
+  // const shuffeledAnswers = answers && answers.sort(() => Math.random() - 0.5);
+  const shuffleIt = async () => {
+    const data = await quiz;
+    const ans = data && [data.correct, ...data.wrong];
+    const shuffeledAnswers = ans && ans.sort(() => Math.random() - 0.5);
+    setAns(shuffeledAnswers);
+  };
+
+  useEffect(() => {
+    shuffleIt();
+  }, [quiz]);
 
   const handleClick = (item: string) => {
     setBtnIsDisabled(true);
@@ -42,18 +52,19 @@ const Quiz = ({ quiz, checked, setChecked, next, count, setCount }: QuizProp) =>
           {' '}
           <h1 className="quiz__question">{decode(quiz.question)}</h1>
           <div className="quiz__answers">
-            {shuffeledAnswers.map((item: string, index: number) => (
-              <button
-                disabled={btnIsDisabled ? true : false}
-                onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-                  event.preventDefault(), handleClick(item);
-                }}
-                className={className(item)}
-                key={index}
-              >
-                {decode(item)}
-              </button>
-            ))}
+            {ans &&
+              ans.map((item: string, index: number) => (
+                <button
+                  disabled={btnIsDisabled ? true : false}
+                  onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+                    event.preventDefault(), handleClick(item);
+                  }}
+                  className={className(item)}
+                  key={index}
+                >
+                  {decode(item)}
+                </button>
+              ))}
           </div>
         </div>
       )}

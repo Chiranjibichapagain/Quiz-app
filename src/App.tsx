@@ -53,11 +53,11 @@ const App = () => {
     content:
       window.innerWidth > 1024
         ? {
-            width: '300px',
+            width: '500px',
             top: '20%',
             left: '33%',
             right: 'auto',
-            height: '220px'
+            height: '250px'
           }
         : {}
   };
